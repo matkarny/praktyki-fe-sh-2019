@@ -1,3 +1,17 @@
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap');
+
+//Colors
+$product--color: #3146ff;
+$text--color: #000000;
+$background--color: #F7F7F7;
+$secondary--color: #01FFCB;
+
+//Texts
+
+
+
+
 html {
   box-sizing: border-box;
   margin-block: 0 20 0 20 
@@ -5,4 +19,36 @@ html {
  *, *:before, *:after {
   box-sizing: inherit;
  }
- 
+.zonifero__name {
+  color: #000000;	
+  font-family: Poppins;	
+  font-size: 22px;	
+}
+.header{
+  display: flex;
+  flex-direction: row;
+
+}
+
+.header__top {
+  font-family: Roboto;
+  font-size: 13px;
+}
+.header__top li{
+  float: right;
+
+}
+
+.header__top--right{
+  width: 280px;
+  height: 80px;
+  background-color:$product--color; 
+}
+
+.header__top--rightText{
+  color: #FFFFFF;	
+  font-family: 'Roboto', sans-serif;;	
+  font-size: 17px;
+  position: relative;
+position: 50px 150px 16px 60px  
+}
