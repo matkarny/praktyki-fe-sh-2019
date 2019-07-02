@@ -7,7 +7,7 @@ $metric-base: 30px;
 $metric-medium: 40px;
 $metric-large: 60px;
 $metric-x-large: 90px;
-$metric-xx-large: 10px;
+$metric-xx-large: 120px;
 
 //Colors
 $product--color: #3146ff;
@@ -72,44 +72,56 @@ p {
     color: $product--color;
   }
 
-
-.zonifero__name {
-  color: #000000;	
-  font-family: Poppins;	
-  font-size: 22px;	
-}
-.header{
-  display: flex;
-  flex-direction: row;
+.grid{
+  display: grid;
+  grid-template-columns: 1fr 3fr minmax(255px, 1fr) 100px 100px 1fr;
+  grid-template-rows: auto;
+  grid-gap: 20px;
+  grid-template-areas: 
+  "logo . list globe signin getapp"
 
 }
 
-.header__top {
-  font-family: Roboto;
+.header__logo{
+  grid-area: logo;
+  }
+
+.header__list{
+  grid-area: list;
+  text-align: justify;
+  font-family: $font-roboto;
   font-size: 13px;
 }
-.header__top li{
-  float: right;
 
+.header__list li{
+  margin-right: $metric-x-small;
+  display: inline;
 }
 
-.header__top--right{
-  width: 280px;
-  height: 80px;
-  background-color:$product--color; 
+
+.header__globe {
+grid-area: globe;
+margin-left: $metric-small;
+height: $metric-small;
+width: $metric-small;
 }
 
-.header__top--rightText{
-  color: #FFFFFF;	
-  font-family: $font-roboto;	
-  font-size: 17px;
-  position: relative;
-position: 50px 150px 16px 60px  
+.header__signIn{
+  grid-area: signin;
 }
 
+.header__getApp{
+  grid-area: getapp;
+}
 .buttonText{
   font-family: $font-roboto;
   font-size: 17px;
+}
+
+
+
+.navigation{
+  grid-area: navigation;
 }
 
 .card {
@@ -120,6 +132,8 @@ position: 50px 150px 16px 60px
   cursor: pointer;
   font-family: $font-roboto;
   font-size: 17px;
+
+
 
 a:active{
   font-family: $font-roboto;
