@@ -1,5 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css?family=Poppins|Roboto:300,400&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Poppins|Roboto:300,400&display=swap");
 //Metrics
 $metric-x-small: 10px;
 $metric-small: 20px;
@@ -12,118 +11,198 @@ $metric-xx-large: 120px;
 //Colors
 $product--color: #3146ff;
 $text--color: #000000;
-$background--color: #F7F7F7;
-$secondary--color: #01FFCB;
+$background--color: #f7f7f7;
+$secondary--color: #01ffcb;
 
 //Fonts
-$font-roboto: 'Roboto', sans-serif;
-$font-poppins: 'Poppins', sans-serif; 
+$font-roboto: "Roboto", sans-serif;
+$font-poppins: "Poppins", sans-serif;
 
 //Styles
 %big-headline-text {
   font-family: $font-poppins;
   font-weight: bold;
-color: #000;
+  color: #000;
   font-size: 70px;
   line-height: 80px;
-
-
 }
 
+%buttonText {
+  font-family: $font-roboto;
+  font-size: 17px;
+  font-weight: 400;
+}
 
-
-h2 {
+%project__h2 {
   font-family: $font-poppins;
   font-weight: bold;
   color: #000;
   font-size: 30px;
-  line-height: 40px
+  line-height: 40px;
 }
 
-h3 {
+%project__h3 {
   font-family: $font-poppins;
   font-weight: bold;
   color: #000;
   font-size: 19px;
-  line-height: 26px
+  line-height: 26px;
 }
 
-p {
+%project__p {
   font-family: $font-roboto;
   color: #000;
   font-size: 17px;
-  line-height: 25px
+  line-height: 25px;
 }
 
-.description-text {
+%description-text {
   font-family: $font-roboto;
   color: $text--color;
   font-size: 30px;
   line-height: 40px;
 }
-
+html {
+  margin: 20px;
+}
 .headline {
   @extend %big-headline-text;
-  
 }
 
-.headline__hero {
-  @extend %big-headline-text;
-    color: $product--color;
-  }
 
-.grid{
-  display: grid;
-  grid-template-columns: 1fr 3fr minmax(255px, 1fr) 100px 100px 1fr;
-  grid-template-rows: auto;
-  grid-gap: 20px;
-  grid-template-areas: 
-  "logo . list globe signin getapp"
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+// .grid__header{
+//   display: grid;
+//   grid-template-columns: 350px 3fr minmax(255px, 1fr) 100px 100px 1fr;
+//   grid-template-rows: auto;
+//   grid-gap: 20px;
+//   grid-template-areas:
+//   "logo . list globe signin getapp"
 
+// }
+.header--container {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-.header__logo{
-  grid-area: logo;
-  }
+.logo {
+  width: 300px;
+}
 
-.header__list{
-  grid-area: list;
-  text-align: justify;
+.header__list {
+  @extend %project__p;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   font-family: $font-roboto;
   font-size: 13px;
+  width: 255px;
 }
 
-.header__list li{
-  margin-right: $metric-x-small;
-  display: inline;
+.header__list--ul {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
 }
-
 
 .header__globe {
-grid-area: globe;
-margin-left: $metric-small;
-height: $metric-small;
-width: $metric-small;
+  grid-area: globe;
+  margin-left: -$metric-x-small;
+  height: $metric-small;
+  width: $metric-small;
 }
 
-.header__signIn{
-  grid-area: signin;
+.header__signIn {
+  @extend %buttonText;
 }
 
-.header__getApp{
-  grid-area: getapp;
-}
-.buttonText{
-  font-family: $font-roboto;
-  font-size: 17px;
-}
-
-
-
-.navigation{
-  grid-area: navigation;
+.header__getApp {
+  @extend %buttonText;
+  box-sizing: border-box;
+  background: #3146ff;
+  color: #f7f7f7;
+  height: 80px;
+  width: 280px;
+  display: flex;
+  align-items: center;
+  padding-left: $metric-large;
 }
 
+.navigation {
+  @extend %project__h3;
+  font-weight: 400;
+  display: flex;
+  width: 850px;
+  padding: 0 0 0 350px ;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  text-decoration: none;
+
+}
+
+.navigation--ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.navigation--link{
+  text-decoration: none;
+  color: #000;
+  &:hover{
+    font-weight: bold;
+  }
+  &:active{
+    font-weight: bold;
+    border-bottom:4px solid $secondary--color;
+    width: 33px;
+    top: calc(50px);
+  }
+}
+
+.hero{
+  background-image: url('/public/images/first_section_bg.png');
+  display: grid;
+  height: 778px;
+  background-position: center;
+  grid-template-columns: 350px repeat(3, 1fr);
+  grid-template-rows: auto;
+  grid-template-areas:
+  ". article article article";
+}
+
+.hero--grid{
+  grid-area: article;
+  position: relative;
+}
+
+.hero__phone{
+  position: absolute;
+  top: $metric-large;
+  right: $metric-xx-large;
+}
+.hero__bigText{
+  @extend %big-headline-text;
+  color: $product--color;
+}
+
+.hero__description{
+  height: 600px;
+ @extend %description-text;
+
+}
 .card {
   margin: 60px 60px;
 }
@@ -133,13 +212,10 @@ width: $metric-small;
   font-family: $font-roboto;
   font-size: 17px;
 
-
-
-a:active{
-  font-family: $font-roboto;
-  font-weight: bold;
-border-color: #01FFCB;
-margin-top: 4px;
-
-}
+  a:active {
+    font-family: $font-roboto;
+    font-weight: bold;
+    border-color: #01ffcb;
+    margin-top: 4px;
+  }
 }
