@@ -1,74 +1,9 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins:400,700|Roboto:300,400,700&display=swap");
-//Metrics
-$metric-x-small: 10px;
-$metric-small: 20px;
-$metric-base: 30px;
-$metric-medium: 40px;
-$metric-large: 60px;
-$metric-x-large: 90px;
-$metric-xx-large: 120px;
-
-//Colors
-$product--color: #3146ff;
-$text--color: #000000;
-$background--color: #f7f7f7;
-$secondary--color: #01ffcb;
-
-//Fonts
-$font-roboto: "Roboto", sans-serif;
-$font-poppins: "Poppins", sans-serif;
-
-//Styles
-%big-headline-text {
-  font-family: $font-poppins;
-  font-weight: 700;
-  color: #000;
-  font-size: 70px;
-  line-height: 80px;
-}
-
-%buttonText {
-  font-family: $font-roboto;
-  font-size: 17px;
-  font-weight: 400;
-}
-
-%project__h2 {
-  font-family: $font-poppins;
-  font-weight: 700;
-  color: #000;
-  font-size: 30px;
-  line-height: 40px;
-}
-
-%project__h3 {
-  font-family: $font-poppins;
-  font-weight: 700;
-  color: #000;
-  font-size: 19px;
-  line-height: 26px;
-}
-
-%project__p {
-  font-family: $font-roboto;
-  color: #000;
-  font-size: 17px;
-  line-height: 25px;
-}
-
-%description-text {
-  font-family: $font-roboto;
-  color: $text--color;
-  font-size: 30px;
-  line-height: 40px;
-}
-%project_card {
-  margin: 60px 60px;
-}
+@import './metrics.scss';
 
 html {
   margin: 0 20px 20px 20px;
-}
+};
+
 body{
   margin: 0;
 }
@@ -84,9 +19,9 @@ body{
   position: fixed;
   z-index: 100;
   height: 200;
-  background-color: #FFFFFF;
   width: 100%;
   padding: 0;
+  background-color: $background--color;
 
   
 }
@@ -96,15 +31,7 @@ body{
   justify-content: space-between;
   align-items: center;
 }
-// .grid__header{
-//   display: grid;
-//   grid-template-columns: 350px 3fr minmax(255px, 1fr) 100px 100px 1fr;
-//   grid-template-rows: auto;
-//   grid-gap: 20px;
-//   grid-template-areas:
-//   "logo . list globe signin getapp"
 
-// }
 .header--container {
   width: 50%;
   flex-direction: row;
@@ -185,7 +112,6 @@ body{
   }
   &:active {
     font-weight: bold;
-    // border-bottom:4px solid $secondary--color;
     width: 33px;
     &::after {
       content: "";
@@ -197,13 +123,20 @@ body{
     }
   }
 }
+@media only screen and (max-width: 768px){
+  .parentheader{
+display: none;
+  }
+  .logo{
+    display: inline;
+  }
+  }
 
 .hero {
-  background-image: url("/public/images/first_section_bg.png");
+  position: relative;
   display: grid;
   height: 778px;
-  padding-top: 400px;
-  background-position: center;
+  padding-top: 180px;
   grid-template-columns: 350px repeat(3, 1fr);
   grid-template-rows: auto;
   grid-template-areas:
@@ -211,11 +144,27 @@ body{
     "background adventage adventage adventage";
 }
 
-.hero--grid {
+.hero--style {
   grid-area: article;
   position: relative;
+  padding-top: 180px;
   background-color: $background--color;
+  background-image: url("/public/images/first_section_bg.png");
+background-attachment: scroll;
+  background-position: 80% 0%;
 }
+
+@media (max-width: 768px){
+
+.hero{
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "article",
+    "adventage"
+}
+}
+
+
 .hero__background {
   grid-area: background;
   background-color: $background--color;
@@ -229,13 +178,19 @@ body{
 
 .hero__phone {
   position: absolute;
+  display:block;
+  overflow: hidden;
+  margin: none;
+  display:inline-block;
+  padding-bottom: -100px;
   top: $metric-large;
   right: $metric-xx-large;
+  object-fit: cover;
+  width: 500px
 }
 
 .hero__description {
   position: relative;
-  height: 600px;
   margin: $metric-small 0;
   @extend %description-text;
 }
@@ -251,16 +206,20 @@ body{
 .adventages {
   grid-area: adventage;
   background: #f7f7f7;
+  z-index: 90;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+ opacity: 1;
+  margin-top: $metric-small;
 
   &__card {
     @extend %project_card;
     margin-left: 0;
     &--header {
       @extend %project__h2;
+      margin-top: 0;
     }
     &--paragraph {
       @extend %project__p;
@@ -268,3 +227,9 @@ body{
     
   }
 }
+@media (max-width: 768px){
+
+  .adventages{
+    flex-direction: column;
+  }
+  }

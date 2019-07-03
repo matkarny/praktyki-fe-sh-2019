@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,700|Roboto:300,400,700&display=swap");
+//Metrics
+$metric-x-small: 10px;
+$metric-small: 20px;
+$metric-base: 30px;
+$metric-medium: 40px;
+$metric-large: 60px;
+$metric-x-large: 90px;
+$metric-xx-large: 120px;
+
+//Colors
+$product--color: #3146ff;
+$text--color: #000000;
+$background--color: #f7f7f7;
+$secondary--color: #01ffcb;
+
+//Fonts
+$font-roboto: "Roboto", sans-serif;
+$font-poppins: "Poppins", sans-serif;
+
+//Styles
+%big-headline-text {
+  font-family: $font-poppins;
+  font-weight: 700;
+  color: #000;
+  font-size: 70px;
+  line-height: 80px;
+}
+
+%buttonText {
+  font-family: $font-roboto;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+%project__h2 {
+  font-family: $font-poppins;
+  font-weight: 700;
+  color: #000;
+  font-size: 30px;
+  line-height: 40px;
+}
+
+%project__h3 {
+  font-family: $font-poppins;
+  font-weight: 700;
+  color: #000;
+  font-size: 19px;
+  line-height: 26px;
+}
+
+%project__p {
+  font-family: $font-roboto;
+  color: #000;
+  font-size: 17px;
+  line-height: 25px;
+}
+
+%description-text {
+  font-family: $font-roboto;
+  color: $text--color;
+  font-size: 30px;
+  line-height: 40px;
+}
+%project_card {
+  margin: 60px 60px;
+}
