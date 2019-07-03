@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins|Roboto:300,400&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,700|Roboto:300,400,700&display=swap");
 //Metrics
 $metric-x-small: 10px;
 $metric-small: 20px;
@@ -21,7 +21,7 @@ $font-poppins: "Poppins", sans-serif;
 //Styles
 %big-headline-text {
   font-family: $font-poppins;
-  font-weight: bold;
+  font-weight: 700;
   color: #000;
   font-size: 70px;
   line-height: 80px;
@@ -35,7 +35,7 @@ $font-poppins: "Poppins", sans-serif;
 
 %project__h2 {
   font-family: $font-poppins;
-  font-weight: bold;
+  font-weight: 700;
   color: #000;
   font-size: 30px;
   line-height: 40px;
@@ -43,7 +43,7 @@ $font-poppins: "Poppins", sans-serif;
 
 %project__h3 {
   font-family: $font-poppins;
-  font-weight: bold;
+  font-weight: 700;
   color: #000;
   font-size: 19px;
   line-height: 26px;
@@ -62,6 +62,10 @@ $font-poppins: "Poppins", sans-serif;
   font-size: 30px;
   line-height: 40px;
 }
+%project_card {
+  margin: 60px 60px;
+}
+
 html {
   margin: 20px;
 }
@@ -69,8 +73,8 @@ html {
   @extend %big-headline-text;
 }
 
-
 .header {
+  position: sticky;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -87,7 +91,6 @@ html {
 // }
 .header--container {
   width: 50%;
-  display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
@@ -145,12 +148,11 @@ html {
   font-weight: 400;
   display: flex;
   width: 850px;
-  padding: 0 0 0 350px ;
+  padding: 0 0 0 350px;
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
   text-decoration: none;
-
 }
 
 .navigation--ul {
@@ -158,64 +160,94 @@ html {
   list-style-type: none;
 }
 
-.navigation--link{
+.navigation--link {
+  position: relative;
   text-decoration: none;
   color: #000;
-  &:hover{
+  &:hover {
     font-weight: bold;
   }
-  &:active{
+  &:active {
     font-weight: bold;
-    border-bottom:4px solid $secondary--color;
+    // border-bottom:4px solid $secondary--color;
     width: 33px;
-    top: calc(50px);
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 33px;
+      height: 4px;
+      background-color: $secondary--color;
+    }
   }
 }
 
-.hero{
-  background-image: url('/public/images/first_section_bg.png');
+.hero {
+  background-image: url("/public/images/first_section_bg.png");
   display: grid;
   height: 778px;
   background-position: center;
   grid-template-columns: 350px repeat(3, 1fr);
   grid-template-rows: auto;
   grid-template-areas:
-  ". article article article";
+    "background article article article"
+    "background adventage adventage adventage";
 }
 
-.hero--grid{
+.hero--grid {
   grid-area: article;
   position: relative;
+  background-color: $background--color;
+}
+.hero__background {
+  grid-area: background;
+  background-color: $background--color;
+}
+.hero__bigText {
+  @extend %big-headline-text;
+  color: $product--color;
+  margin: $metric-medium 0;
+  z-index: 2;
 }
 
-.hero__phone{
+.hero__phone {
   position: absolute;
   top: $metric-large;
   right: $metric-xx-large;
 }
-.hero__bigText{
-  @extend %big-headline-text;
-  color: $product--color;
-}
 
-.hero__description{
+.hero__description {
+  position: relative;
   height: 600px;
- @extend %description-text;
-
+  margin: $metric-small 0;
+  @extend %description-text;
 }
-.card {
-  margin: 60px 60px;
+.hero__application {
+  position: absolute;
+}
+.hero_application--platform {
+  margin: $metric-small $metric-x-small $metric-x-small 0;
 }
 
-.tab {
-  cursor: pointer;
-  font-family: $font-roboto;
-  font-size: 17px;
+.hero__adventages {
+}
+.adventages {
+  grid-area: adventage;
+  background: #f7f7f7;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
-  a:active {
-    font-family: $font-roboto;
-    font-weight: bold;
-    border-color: #01ffcb;
-    margin-top: 4px;
+  &__card {
+    @extend %project_card;
+    margin-left: 0;
+    &--header {
+      @extend %project__h2;
+    }
+    &--paragraph {
+      @extend %project__p;
+    }
+    
   }
 }
