@@ -11,11 +11,10 @@ body{
   @extend %big-headline-text;
 }
 .parentheader{
-
   width: 100%;
   position: relative;
 }
-.parentheader__fixed{
+.parentheader__fixed--desktop{
   position: fixed;
   z-index: 100;
   height: 200;
@@ -25,6 +24,11 @@ body{
 
   
 }
+
+.parentheader__fixed--mobile{
+  display: none;
+}
+
 .header {
   display: flex;
   flex-direction: row;
@@ -91,6 +95,8 @@ body{
   align-items: center;
   padding-left: $metric-large;
 }
+.header__hamburger{
+}
 
 .navigation {
   @extend %project__h3;
@@ -104,12 +110,12 @@ body{
   text-decoration: none;
 }
 
-.navigation--ul {
+.navigation__ul {
   padding: 0;
   list-style-type: none;
 }
 
-.navigation--link {
+.navigation__link {
   position: relative;
   text-decoration: none;
   color: #000;
@@ -130,14 +136,49 @@ body{
   }
 }
 @media only screen and (max-width: 768px){
-  .header--container{
+  html {
+    margin: 0;
+  };
+
+  .parentheader__fixed--desktop{
 display: none;
   }
-  .navigation--link{
-    display: none;
-    padding: 0;
+  .parentheader__fixed--mobile{
+  height: $metric-x-large;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 20px;
+  }
+
+  .logo{
+    display: inline;
+    
+  }
+  
+  .navigation__paragraph{
+    font-family: $font-roboto;
+  color: #000000;
+  font-size: 15px;
+  line-height: 27px;
+  margin-right: 20px;
+
+  }
+
+  .header__arrow{
+    display: inline;
+    top: 0;
+  }
+
+  .header__hamburger{
+    color: $product--color;
+    height: 1rem;
+
   }
 }
+
+
 .hero {
   position: relative;
   display: grid;
@@ -150,7 +191,7 @@ display: none;
     "background adventage adventage adventage";
 }
 
-.hero--style {
+.hero__style {
   grid-area: article;
   position: relative;
   padding-top: 180px;
@@ -163,10 +204,12 @@ background-attachment: scroll;
 @media (max-width: 768px){
 
 .hero{
+  padding-top: 0;
   grid-template-columns: 1fr;
   grid-template-areas:
     "article",
     "adventage"
+
 }
 }
 

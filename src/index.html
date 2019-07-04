@@ -7,9 +7,9 @@
     <title>Praktyki zonifero</title>
   </head>
   <body>
+
     <div class="parentheader">
-        <div class="parentheader__fixed"> 
-    
+        <div class="parentheader__fixed--desktop">    
     <header class="header">
       <div class="header logo">
         <img src="/public/images/logo.png" alt="Zonifero logo" />
@@ -32,20 +32,27 @@
       </div>
     </header>
     <div class="navigation">
-      <ul class="navigation navigation--ul">
-        <p>zonifero WorkPlace:</p>
-        <li><a class="navigation--link" href="#">Overview</a></li>
-        <li><a class="navigation--link" href="#">Features</a></li>
-        <li><a class="navigation--link" href="#">Specs</a></li>
-        <li><a class="navigation--link" href="#">FAQ</a></li>
-        <li><a class="navigation--link" href="#">Contact</a></li>
+      <ul class="navigation navigation__ul">
+        <p class="navigation__paragraph">zonifero WorkPlace:</p>
+        <li><a class="navigation__link" href="#">Overview</a></li>
+        <li><a class="navigation__link" href="#">Features</a></li>
+        <li><a class="navigation__link" href="#">Specs</a></li>
+        <li><a class="navigation__link" href="#">FAQ</a></li>
+        <li><a class="navigation__link" href="#">Contact</a></li>
       </ul>
     </div>
+  </div>
+  <div class="parentheader__fixed--mobile">
+      <img src="/public/images/mobile_logo.png" alt="Zonifero logo" />
+      <div style="display: flex; flex-direction: row; align-items: center;"><p class="navigation__paragraph">zonifero WorkPlace:</p>
+      <img src="../public/images/chevron-down-solid.svg" class="header header__arrow">
+    </div>
+      <div class="header__hamburger" >☰</div>
   </div>
 </div>
     <div class="hero">
       <div class="hero__background"></div>
-      <article class="hero--style">
+      <article class="hero__style">
        
         <h1 class="hero__bigText">
           Streamline <br />
@@ -88,9 +95,8 @@
           </p>
         </div>
         </div>
-        <p style="color: blue; height: 30px">☰</p>
+        
       </article>
     </div>
-   
   </body>
 </html>
