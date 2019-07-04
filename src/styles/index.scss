@@ -27,6 +27,7 @@ body{
 .parentheader{
   width: 100%;
   position: relative;
+
 }
 .parentheader__fixed--desktop{
   position: fixed;
@@ -34,6 +35,7 @@ body{
   height: 200;
   width: 100%;
   padding: 0;
+  background-color: white;
 
   
 }
@@ -178,11 +180,12 @@ display: none;
   }
   
   .navigation__paragraph{
-    font-family: $font-roboto;
+  font-family: $font-roboto;
   color: #000000;
   font-size: 15px;
   line-height: 27px;
   margin-right: 20px;
+  font-weight: 400;
 
   }
 
@@ -202,84 +205,95 @@ display: none;
 .hero {
   position: relative;
   display: grid;
-  height: 778px;
   padding-top: 180px;
-  
+  padding-left:350px;
+  background-color: $background--color;
+
+  @include mobile(){
+    padding: 0;
+grid-template-columns: 1fr;
+grid-template-rows: 40vh 600px 40vh 40vh;
+grid-template-areas:
+  "articletitle"
+  "decoration"
+  "articledescription"
+  "adventage"
+}
     @include desktop(){
-      grid-template-columns: 350px repeat(3, 1fr);
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 350px 350px 1fr;
       grid-template-areas:
-        "background article article article"
-        "background adventage adventage adventage"
+        "articletitle decoration"
+        "articledescription decoration"
+        "adventage adventage"
     }
 
-    @include mobile(){
-      padding-top: 0;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(4, 25%);
-  grid-template-areas:
-    "title"
-    "article"
-    "description"
-    "adventage"
+ 
 }
-}
-.article_background-container{
-  grid-area: article;
-}
+
 .hero__style {
+  grid-area: decoration;
   position: relative;
   padding-top: 180px;
   background-color: $background--color;
   background-image: url("/public/images/first_section_bg.png");
-  background-position: 80% 0%;
+  background-position: bottom right;
+  object-fit: cover;
+  
 }
 .hero__phone {
   position: absolute;
   display:block;
-  overflow: hidden;
   margin: none;
-  display:inline-block;
-  padding-bottom: -100px;
   top: $metric-large;
   right: $metric-xx-large;
-  object-fit: cover;
-  width: 500px
-}
+  @include mobile(){
+    top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
 
-
-.hero__background {
-  @include desktop(){
-  grid-area: background;
-  background-color: $background--color;
   }
 }
+
 .hero__bigText {
+  grid-area: articletitle;
   @extend %big-headline-text;
   color: $product--color;
   margin: $metric-medium 0;
-  z-index: 2;
-
+  position: relative;
+  top: 10vh;
   @include mobile(){
-  grid-area: title;
-}
+    background-color: $background--color;
+    margin: 0 0 20px 20px;
+  }
 }
 
 
 
 .hero__description {
+  grid-area: articledescription;
   position: relative;
   margin: $metric-small 0;
   @extend %description-text;
+  @include mobile(){
+    margin: 0;
+    background-color: white;
+    padding: 20px;
+  }
 }
+
 .hero__application {
-  position: absolute;
+
+  @include mobile(){
+    display: flex;
+    justify-content: center;
+  }
 }
 .hero_application--platform {
   margin: $metric-small $metric-x-small $metric-x-small 0;
 }
 
-.hero__adventages {
-}
 .adventages {
   grid-area: adventage;
   background: #f7f7f7;
@@ -289,7 +303,6 @@ display: none;
   justify-content: space-between;
   align-items: center;
  opacity: 1;
-  margin-top: $metric-small;
 
   &__card {
     @extend %project_card;
@@ -301,8 +314,14 @@ display: none;
     &--paragraph {
       @extend %project__p;
     }
-    
+    @include mobile(){
+      margin: 0;
+      width: 100%;
+      padding: 20px;
+      background-color: white;
+    }
   }
+
 }
 @include mobile(){
 
