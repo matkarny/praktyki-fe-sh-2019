@@ -1,7 +1,21 @@
 @import './metrics.scss';
 
+@mixin mobile {
+
+  @media (max-width: 768px) { @content };
+
+};
+
+@mixin desktop {
+  @media (min-width: 768px) { @content }
+}
+
 html {
   margin: 0 20px 20px 20px;
+
+  @include mobile(){
+      margin: 0;
+    };
 };
 
 body{
@@ -20,7 +34,6 @@ body{
   height: 200;
   width: 100%;
   padding: 0;
-  background-color: $background--color;
 
   
 }
@@ -29,6 +42,7 @@ body{
   display: none;
 }
 
+
 .header {
   display: flex;
   flex-direction: row;
@@ -36,8 +50,8 @@ body{
   align-items: center;
 }
 
-.header--container {
-  width: 50%;
+.header__container {
+  min-width: 50%;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
@@ -53,6 +67,7 @@ body{
   margin: 0px;
   padding: 0px;
   display: flex;
+  flex-wrap: wrap-reverse;
   flex-direction: row;
   justify-content: space-between;
   font-family: $font-roboto;
@@ -60,11 +75,20 @@ body{
   width: 255px;
 }
 
-.header__list--ul {
+.header__pointing {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   list-style-type: none;
+}
+
+.header__globe-arrow-container{
+  display: flex;
+  flex-direction: row
+}
+
+.header__mobile-container{
+  display: flex; flex-direction: row; align-items: center;
 }
 
 .header__globe {
@@ -90,19 +114,18 @@ body{
   background: #3146ff;
   color: #f7f7f7;
   height: 80px;
-  width: 280px;
+  width: 30vh ;
   display: flex;
   align-items: center;
-  padding-left: $metric-large;
-}
-.header__hamburger{
+  padding-left: 3vh;
 }
 
 .navigation {
   @extend %project__h3;
   font-weight: 400;
   display: flex;
-  width: 850px;
+  flex-wrap: wrap;
+  width: 60vw;
   padding: 0 0 0 350px;
   flex-direction: row;
   justify-content: space-between;
@@ -135,16 +158,13 @@ body{
     }
   }
 }
-@media only screen and (max-width: 768px){
-  html {
-    margin: 0;
-  };
 
+@include mobile(){
   .parentheader__fixed--desktop{
 display: none;
   }
   .parentheader__fixed--mobile{
-  height: $metric-x-large;
+  height: 8vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -184,47 +204,35 @@ display: none;
   display: grid;
   height: 778px;
   padding-top: 180px;
-  grid-template-columns: 350px repeat(3, 1fr);
-  grid-template-rows: auto;
-  grid-template-areas:
-    "background article article article"
-    "background adventage adventage adventage";
-}
+  
+    @include desktop(){
+      grid-template-columns: 350px repeat(3, 1fr);
+      grid-template-areas:
+        "background article article article"
+        "background adventage adventage adventage"
+    }
 
-.hero__style {
+    @include mobile(){
+      padding-top: 0;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, 25%);
+  grid-template-areas:
+    "title"
+    "article"
+    "description"
+    "adventage"
+}
+}
+.article_background-container{
   grid-area: article;
+}
+.hero__style {
   position: relative;
   padding-top: 180px;
   background-color: $background--color;
   background-image: url("/public/images/first_section_bg.png");
-background-attachment: scroll;
   background-position: 80% 0%;
 }
-
-@media (max-width: 768px){
-
-.hero{
-  padding-top: 0;
-  grid-template-columns: 1fr;
-  grid-template-areas:
-    "article",
-    "adventage"
-
-}
-}
-
-
-.hero__background {
-  grid-area: background;
-  background-color: $background--color;
-}
-.hero__bigText {
-  @extend %big-headline-text;
-  color: $product--color;
-  margin: $metric-medium 0;
-  z-index: 2;
-}
-
 .hero__phone {
   position: absolute;
   display:block;
@@ -237,6 +245,26 @@ background-attachment: scroll;
   object-fit: cover;
   width: 500px
 }
+
+
+.hero__background {
+  @include desktop(){
+  grid-area: background;
+  background-color: $background--color;
+  }
+}
+.hero__bigText {
+  @extend %big-headline-text;
+  color: $product--color;
+  margin: $metric-medium 0;
+  z-index: 2;
+
+  @include mobile(){
+  grid-area: title;
+}
+}
+
+
 
 .hero__description {
   position: relative;
@@ -276,7 +304,7 @@ background-attachment: scroll;
     
   }
 }
-@media (max-width: 768px){
+@include mobile(){
 
   .adventages{
     flex-direction: column;
