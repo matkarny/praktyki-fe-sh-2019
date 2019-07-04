@@ -40,7 +40,7 @@ body{
 }
 
 .logo {
-  width: 300px;
+  width: 350px;
 }
 
 .header__list {
@@ -64,10 +64,16 @@ body{
 }
 
 .header__globe {
-  grid-area: globe;
-  margin-left: -$metric-x-small;
   height: $metric-small;
   width: $metric-small;
+}
+.header__arrow {
+  height: $metric-x-small;
+  width: $metric-x-small;
+  position: relative;
+  top: $metric-x-small;
+  left: 5px;
+  
 }
 
 .header__signIn {
@@ -124,14 +130,14 @@ body{
   }
 }
 @media only screen and (max-width: 768px){
-  .parentheader{
+  .header--container{
 display: none;
   }
-  .logo{
-    display: inline;
+  .navigation--link{
+    display: none;
+    padding: 0;
   }
-  }
-
+}
 .hero {
   position: relative;
   display: grid;

@@ -13,7 +13,6 @@
     <header class="header">
       <div class="header logo">
         <img src="/public/images/logo.png" alt="Zonifero logo" />
-
       </div>
       <div class="header header--container">
         <div class="header header__list">
@@ -23,9 +22,11 @@
             <li>Blog</li>
           </ul>
         </div>
-        <div class="header header__globe">
-          <img src="/public/images/globe.png" alt="Globe" />
+        <div style='display: flex; flex-direction: row'>
+          <img src="/public/images/globe.png" alt="Globe" class="header header__globe"/>
+          <img src="../public/images/chevron-down-solid.svg" class="header header__arrow">
         </div>
+  
         <div class="header header__signIn"><p>Sign in</p></div>
         <div class="header header__getApp"><p>Get the app</p></div>
       </div>
@@ -87,8 +88,9 @@
           </p>
         </div>
         </div>
+        <p style="color: blue; height: 30px">☰</p>
       </article>
     </div>
-    
+   
   </body>
 </html>
