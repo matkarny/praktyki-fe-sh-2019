@@ -3,17 +3,23 @@
   display: grid;
   padding-top: 180px;
   background-color: $background--color;
+  width: 100%;
 
   @include mobile() {
     padding: 0;
-    grid-template-columns: 1fr;
-    grid-template-rows: 30vmax 600px 400px 40vw;
+    grid-template-columns: 100%;
+    grid-template-rows: 40vmax 600px 400px 40vw;
     grid-template-areas:
       "articletitle"
       "decoration"
       "articledescription"
       "adventage";
   }
+
+  @include mobile-small(){
+    grid-template-rows: 40vmax 600px 600px 40vw;
+  }
+
   @include desktop() {
     grid-template-columns: minmax(10%, 350px) 1fr 1.5fr;
     grid-template-rows: 350px 350px 1fr;
@@ -21,6 +27,7 @@
       ". articletitle decoration"
       ". articledescription decoration"
       ". adventage adventage";
+      
     @include small-desktop() {
       grid-template-rows: 350px minmax(350px, 1fr) 1fr;
     }
@@ -51,20 +58,29 @@
       justify-content: center;
       align-items: flex-start;
     }
+    @include mobile-small(){
+      margin: 0px;
+      position: relative;
+      left: -50px;
+    }
   }
 
-  &__bigText {
+  &__big-text {
     grid-area: articletitle;
     @extend %big-headline-text;
     color: $product--color;
     margin: $metric-medium 0;
     position: relative;
-    top: 10vh;
+    top:10vh;
     @include mobile() {
       background-color: $background--color;
-      margin: 0 0 20px 20px;
+      margin: 0 20px 20px 20px;
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
+    }
+    @include mobile-small(){
+    font-size: 60px;
     }
   }
 
@@ -74,11 +90,11 @@
     margin: $metric-small 0;
     @extend %description-text;
     @include mobile() {
-      margin: 0;
       background-color: white;
       padding: 20px;
       display: flex;
       flex-wrap: wrap;
+      margin: 0;
     }
   }
 
@@ -87,14 +103,21 @@
       display: flex;
       justify-content: center;
     }
+
+    @include mobile-small(){
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
   }
 
   &__application-platform {
     margin: $metric-small $metric-x-small $metric-x-small 0;
     height: 70px;
     @include mobile() {
-      margin: 10px 5vw 10px 5vw;
+      margin: 10px 10px 5vw;
     }
+
   }
 }
 
@@ -123,6 +146,8 @@
       @extend %project__p;
     }
     @include mobile() {
+      display: flex;
+      flex-wrap: wrap;
       margin: 0;
       width: 100%;
       padding: 20px;
