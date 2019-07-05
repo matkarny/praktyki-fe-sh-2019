@@ -1,33 +1,33 @@
 .parent-header {
-    width: 100%;
+  width: 100%;
+  position: relative;
+  @include mobile() {
     position: relative;
-    @include mobile() {
-      position: relative;
-    }
   }
-  .parent-header__navigation-desktop {
-    position: fixed;
-    z-index: 100;
-    height: 200px;
-    width: 100%;
-    padding: 0;
-    background-color: white;
-    @include mobile() {
-      display: none;
-    }
-  }
-  
-  .parent-header__navigation-mobile {
+}
+.parent-header__navigation-desktop {
+  position: fixed;
+  z-index: 100;
+  height: 200px;
+  width: 100%;
+  padding: 0;
+  background-color: white;
+  @include mobile() {
     display: none;
-    @include mobile() {
-      height: 8vh;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      margin: 0 20px;
-    }
   }
+}
+
+.parent-header__navigation-mobile {
+  display: none;
+  @include mobile() {
+    height: 8vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 20px;
+  }
+}
 
 .main-header {
   display: flex;
