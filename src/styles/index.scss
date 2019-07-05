@@ -2,14 +2,20 @@
 @import "./media-res.scss";
 @import "./header.scss";
 @import "./hero-section.scss";
+@import "./form-style.scss";
 
 html {
   margin: 0 20px 20px 20px;
   @include mobile() {
     margin: 0;
+    width: 100%;
   }
 }
 
 body {
   margin: 0;
+  @include mobile() {
+    margin: 0;
+
+  }
 }

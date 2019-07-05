@@ -20,12 +20,19 @@
 .parent-header__navigation-mobile {
   display: none;
   @include mobile() {
-    height: 8vh;
+    position: fixed;
+    height: 100px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin: 0 20px;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background: white;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
   }
 }
 
@@ -118,14 +125,13 @@
   &__hamburger {
     @include mobile() {
       color: $product--color;
-      height: 1rem;
+      height: 2rem;
+      font-size: $metric-small;
     }
   }
 }
 
 .navigation {
-  @extend %project__h3;
-  font-weight: 400;
   display: flex;
   flex-wrap: wrap;
   width: 60vw;
@@ -142,31 +148,12 @@
 
   &__link {
     position: relative;
-    text-decoration: none;
-    color: #000;
-    &:hover {
-      font-weight: bold;
-    }
-    &:active {
-      font-weight: bold;
-      width: 33px;
-      &::after {
-        content: "";
-        position: absolute;
-        display: block;
-        width: 33px;
-        height: 4px;
-        background-color: $secondary--color;
-      }
-    }
+   @extend %link_styler;
   }
 
   &__text {
+    @extend %project__h3;
     font-family: $font-roboto;
-    color: #000000;
-    font-size: 15px;
-    line-height: 27px;
-    margin-right: 20px;
     font-weight: 400;
-  }
+     }
 }

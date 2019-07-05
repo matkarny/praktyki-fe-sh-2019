@@ -1,0 +1,16 @@
+//upper Roboto Light, 13 px #000
+//input Roboto Regular, 30px #000
+
+
+.form-section__options-container{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.form-section__option{
+    @extend %link_styler;
+    font-size: 17px;
+    padding: 20px;
+}
