@@ -2,13 +2,17 @@
 
 @mixin mobile {
 
-  @media (max-width: 768px) { @content };
+  @media (max-width: 1000px) { @content };
 
 };
 
 @mixin desktop {
-  @media (min-width: 768px) { @content }
-}
+  @media (min-width: 1000px) { @content }
+};
+
+@mixin small-desktop {
+  @media (min-width: 1000px) { @content }
+};
 
 html {
   margin: 0 20px 20px 20px;
@@ -20,6 +24,7 @@ html {
 
 body{
   margin: 0;
+
 }
 .headline {
   @extend %big-headline-text;
@@ -27,21 +32,34 @@ body{
 .parentheader{
   width: 100%;
   position: relative;
+  @include mobile(){
+    position: relative;
+  }
 
 }
 .parentheader__fixed--desktop{
   position: fixed;
   z-index: 100;
-  height: 200;
+  height: 200px;
   width: 100%;
   padding: 0;
   background-color: white;
-
+  @include mobile(){
+    display: none;
+  }
   
 }
 
 .parentheader__fixed--mobile{
   display: none;
+  @include mobile(){
+      height: 8vh;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 20px;
+  }
 }
 
 
@@ -61,6 +79,9 @@ body{
 
 .logo {
   width: 350px;
+  @include mobile(){
+    display: inline; 
+  }
 }
 
 .header__list {
@@ -103,6 +124,11 @@ body{
   position: relative;
   top: $metric-x-small;
   left: 5px;
+  @include mobile(){
+    display: inline;
+    top: 0;
+  }
+
   
 }
 
@@ -116,11 +142,18 @@ body{
   background: #3146ff;
   color: #f7f7f7;
   height: 80px;
-  width: 30vh ;
+  width: 30% ;
   display: flex;
   align-items: center;
-  padding-left: 3vh;
+  padding-left: 3vw;
 }
+
+.header__hamburger{
+  @include mobile(){
+  color: $product--color;
+  height: 1rem;
+
+}}
 
 .navigation {
   @extend %project__h3;
@@ -160,26 +193,7 @@ body{
     }
   }
 }
-
-@include mobile(){
-  .parentheader__fixed--desktop{
-display: none;
-  }
-  .parentheader__fixed--mobile{
-  height: 8vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 20px;
-  }
-
-  .logo{
-    display: inline;
-    
-  }
-  
-  .navigation__paragraph{
+.navigation__paragraph{
   font-family: $font-roboto;
   color: #000000;
   font-size: 15px;
@@ -189,30 +203,16 @@ display: none;
 
   }
 
-  .header__arrow{
-    display: inline;
-    top: 0;
-  }
-
-  .header__hamburger{
-    color: $product--color;
-    height: 1rem;
-
-  }
-}
-
-
 .hero {
   position: relative;
   display: grid;
   padding-top: 180px;
-  padding-left:350px;
   background-color: $background--color;
 
   @include mobile(){
     padding: 0;
 grid-template-columns: 1fr;
-grid-template-rows: 40vh 600px 40vh 40vh;
+grid-template-rows: 30vmax 600px 400px 40vw;
 grid-template-areas:
   "articletitle"
   "decoration"
@@ -220,12 +220,16 @@ grid-template-areas:
   "adventage"
 }
     @include desktop(){
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(10%, 350px) 1fr 1.5fr;
       grid-template-rows: 350px 350px 1fr;
       grid-template-areas:
-        "articletitle decoration"
-        "articledescription decoration"
-        "adventage adventage"
+        ". articletitle decoration"
+        ". articledescription decoration"
+        ". adventage adventage";
+        @include small-desktop(){
+          grid-template-rows: 350px minmax(350px, 1fr) 1fr;
+        }
+    
     }
 
  
@@ -234,24 +238,28 @@ grid-template-areas:
 .hero__style {
   grid-area: decoration;
   position: relative;
-  padding-top: 180px;
+  padding-top: $metric-large;
   background-color: $background--color;
   background-image: url("/public/images/first_section_bg.png");
   background-position: bottom right;
   object-fit: cover;
+  @include mobile(){
+    padding: 0;
+    
+  }
   
 }
 .hero__phone {
-  position: absolute;
-  display:block;
   margin: none;
-  top: $metric-large;
-  right: $metric-xx-large;
-  @include mobile(){
-    top: 0;
-  right: 0;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin-left: 10vw;
+  @include mobile(){
+    padding: 0;
+    justify-content: center;
+    align-items: flex-start;
+
 
   }
 }
@@ -266,6 +274,8 @@ grid-template-areas:
   @include mobile(){
     background-color: $background--color;
     margin: 0 0 20px 20px;
+    display: flex;
+    flex-wrap: wrap;
   }
 }
 
@@ -280,10 +290,13 @@ grid-template-areas:
     margin: 0;
     background-color: white;
     padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
   }
 }
 
 .hero__application {
+
 
   @include mobile(){
     display: flex;
@@ -292,6 +305,10 @@ grid-template-areas:
 }
 .hero_application--platform {
   margin: $metric-small $metric-x-small $metric-x-small 0;
+  height: 70px;
+  @include mobile(){
+    margin: 10px 5vw 10px 5vw;
+  }
 }
 
 .adventages {
