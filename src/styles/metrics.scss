@@ -67,7 +67,6 @@ $font-poppins: "Poppins", sans-serif;
 }
 
 %link_styler{
-  position: relative;
   @extend %project__h3;
   font-family: $font-roboto;
   text-decoration: none;
